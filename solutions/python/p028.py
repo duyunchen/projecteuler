@@ -19,10 +19,7 @@ the gaps between the numbers are 2, 2, 2, 2, 4, 4, 4, 4, 6, 6, 6, 6... etc
 def run():
     N = 1001
     
-    total = 0
-    current = 1
-    increment = 2
-    counter = 0
+    total, counter, current, increment = 0,0,1,2
     
     while current <= N*N:
         total += current
