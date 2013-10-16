@@ -1,4 +1,6 @@
-projecteuler
-============
+Project Euler Solutions
+=======================
 
-My solutions to Project Euler problems. (http://projecteuler.net/)
+My own attempts at Project Euler problems. Currently in Python but will extend to Java, C++, and Javascript. 
+
+http://projecteuler.net/
