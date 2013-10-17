@@ -12,7 +12,8 @@ Find the sum of all the numbers that can be written as the sum of fifth powers o
 """
 
 """
-Solution: Brute force again.  Not sure if there are number theory tricks to this.
+Solution: Brute force again.  Not sure if there are number theory tricks to it
+that render this completely trivial.
 """
 def run():
     #We loosely choose this as a cap.  Doesn't make sense to search above this

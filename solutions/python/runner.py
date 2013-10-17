@@ -1,4 +1,4 @@
-import p030 as solution
+import p031 as solution
 import time
 
 def run():
