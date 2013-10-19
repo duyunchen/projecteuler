@@ -1,12 +1,26 @@
 import math
 
-# Finds the GCD between two numbers
+# Finds the lcm between two numbers
+def lcm(a, b):
+    return a*b/gcd(a,b)
+    
+# Finds the LCM between two numbers
 def gcd(a, b):
     if b is 0:
         return a
     else:
         return gcd(b, a % b)
 
+# Returns whether x is a palindrome
+def is_palindrome(x):
+    return str(x) == str(x)[::-1]
+
+# Converts a number to string binary
+def to_binary(n):
+    if n==0: return ""
+    else:
+        return to_binary(n/2) + str(n%2)
+    
 # Computes the product of a list of numbers
 def product(numbers):
     if len(numbers) is 0: return 0
@@ -15,13 +29,12 @@ def product(numbers):
     
 # Determines if a number is prime
 def is_prime(num):
-    if num == 2: return True #trival cases
-    if num % 2 == 0: return False 
+    if num == 2: return True
+    if num == 1 or num % 2 == 0: return False 
     
     n_sqrt = int(math.ceil(math.sqrt(num)))
     for x in xrange(3,n_sqrt + 1,2):
-        if num % x == 0:
-            return False
+        if num % x == 0: return False
     return True
 
 # Generator for permutations of a string
@@ -62,6 +75,17 @@ def get_divisors(n, sort=True):
             if n/x != x: divisors.add(n/x)
     return sorted(list(divisors)) if sort else list(divisors)
 
+# Generator for rotations of string s 
+def generate_rotation(s):
+    if len(s) == 0:
+        yield None
+    elif len(s) == 1:
+        yield s[0]
+    else:
+        for _ in xrange(len(s)):
+            s = s[1:] + s[0]
+            yield s
+            
 # Returns a boolean list of size n. a[i] = True if i is prime, false otherwise
 def get_prime_sieve(n):
     if n is 0:
@@ -88,12 +112,39 @@ def get_prime_sieve(n):
     sieve[2] = True #special cases
     return sieve
 
+# Returns a choose b
 def combination(a, b):
     top = a
     bottom = b if a - b < b else a - b
     return product(range(bottom+1, top+1))/factorial(top - bottom)
-    
+
+# Returns n!
 def factorial(n):
+    if n <= 1: return 1
     return product(range(2,n + 1))
+
+class Counter():
+    def __init__(self):
+        self.counter = {}
     
-     
+    def add(self, obj):
+        if not self.counter.get(obj):
+            self.counter[obj] = 1
+        else:
+            self.counter[obj] += 1
+            
+    def get(self, obj):
+        if not self.counter.get(obj):
+            return 0
+        else:
+            return self.counter[obj]
+    
+    # returns item with the highest count along with the count
+    def get_most(self):
+        largest = -1
+        best = None
+        for key, value in self.counter.items():
+            if value > largest:
+                largest = value
+                best = key
+        return best, largest

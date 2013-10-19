@@ -4,6 +4,8 @@ A palindromic number reads the same both ways. The largest palindrome made from 
 Find the largest palindrome made from the product of two 3-digit numbers.
 """
 
+from utils import is_palindrome
+
 #Solution: just a double loop through all 3-digit numbers and check
 #if the product is palindrome while keeping track of the largest.
 def run():
@@ -15,6 +17,3 @@ def run():
                 largest = p
     return largest
 
-#Check if a number is a palindrome by reversing the number
-def is_palindrome(num):
-    return str(num) == str(num)[::-1]

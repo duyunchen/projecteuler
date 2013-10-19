@@ -1,10 +1,10 @@
-import p031 as solution
+import p041 as solution
 import time
 
 def run():
     return solution.run()
     
-if __name__=="__main__":
+if __name__ == "__main__":
     print "Running " + solution.__name__
     startTime = int(round(time.time() * 1000))
     print "Result: " + str(run())
