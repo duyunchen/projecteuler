@@ -82,13 +82,14 @@ def get_sum_of_first_n(n):
 # Returns unique primes factors of a number
 def get_prime_factors(n):
     factors = set()
-    sieve = get_prime_sieve(n//2 + 1)
-    for i in xrange(2, len(sieve)):
-        if sieve[i] and n % i == 0:
-            factors.add(i)
-            n /= i
-        while sieve[i] and n % i == 0:
-            n /= i
+    d = 2
+    while d*d <= n:
+        while n % d == 0:
+            factors.add(d)  # supposing you want multiple factors repeated
+            n /= d
+        d += 1 if d == 2 else 2
+    if n > 1:
+       factors.add(n)
     return factors
     
 # Returns a list of divisors of a number
