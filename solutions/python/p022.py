@@ -6,7 +6,7 @@ For example, when the list is sorted into alphabetical order, COLIN, which is wo
 What is the total of all the name scores in the file?
 """
 
-alphabet = { char : index+1 for index,char in enumerate("abcdefghijklmnopqrstuvwxyz")}
+from utils import alphabet, read_file
 
 # Pretty easy.  Basically just follow the given rules.
 def run():
@@ -22,7 +22,5 @@ def run():
 def get_alphabetical_value(word):
     return sum([alphabet[c] for c in word.lower()])
     
-def read_file(filename):
-    with open(filename) as f:
-        return map(lambda x: x.replace('"', '').strip(), f.read().split(","))
+
 

@@ -1,5 +1,22 @@
 import math
 
+alphabet = { char : index+1 for index,char in enumerate("abcdefghijklmnopqrstuvwxyz")}
+
+# Reads a text file in the standard EP format
+def read_file(filename):
+    with open(filename) as f:
+        return map(lambda x: x.replace('"', '').strip(), f.read().split(","))
+
+# Determines if a number is a perfect square
+def is_square(n):
+    x = n // 2
+    seen = set([x])
+    while x * x != n:
+        x = (x + (n // x)) // 2
+        if x in seen: return False
+        seen.add(x)
+    return True
+    
 # Finds the lcm between two numbers
 def lcm(a, b):
     return a*b/gcd(a,b)
@@ -62,6 +79,18 @@ def is_reverse_sorted(L):
 def get_sum_of_first_n(n):
     return n*(n+1)/2
 
+# Returns unique primes factors of a number
+def get_prime_factors(n):
+    factors = set()
+    sieve = get_prime_sieve(n//2 + 1)
+    for i in xrange(2, len(sieve)):
+        if sieve[i] and n % i == 0:
+            factors.add(i)
+            n /= i
+        while sieve[i] and n % i == 0:
+            n /= i
+    return factors
+    
 # Returns a list of divisors of a number
 def get_divisors(n, sort=True):
     if n <= 3: return [1,n]
@@ -72,8 +101,8 @@ def get_divisors(n, sort=True):
             continue
         if n % x == 0:
             divisors.add(x)
-            if n/x != x: divisors.add(n/x)
-    return sorted(list(divisors)) if sort else list(divisors)
+            divisors.add(n/x)
+    return sorted(list(divisors)) if sort else divisors
 
 # Generator for rotations of string s 
 def generate_rotation(s):
@@ -85,7 +114,7 @@ def generate_rotation(s):
         for _ in xrange(len(s)):
             s = s[1:] + s[0]
             yield s
-            
+
 # Returns a boolean list of size n. a[i] = True if i is prime, false otherwise
 def get_prime_sieve(n):
     if n is 0:
@@ -123,6 +152,7 @@ def factorial(n):
     if n <= 1: return 1
     return product(range(2,n + 1))
 
+# A counter class that holds key -> count pairs
 class Counter():
     def __init__(self):
         self.counter = {}
