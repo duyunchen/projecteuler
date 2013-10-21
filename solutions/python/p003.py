@@ -14,7 +14,6 @@ def run():
         while n % i == 0:
             n = n / i
             largest = i
-            print n
         i += 2
     return largest
 
