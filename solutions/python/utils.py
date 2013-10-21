@@ -116,6 +116,15 @@ def generate_rotation(s):
             s = s[1:] + s[0]
             yield s
 
+# Returns a list of all primes up to n
+def get_prime_list(n):
+    primes = [2]
+    is_prime = get_prime_sieve(n)
+    for x in xrange(3, n, 2):
+        if is_prime[x]:
+            primes.append(x)
+    return primes
+    
 # Returns a boolean list of size n. a[i] = True if i is prime, false otherwise
 def get_prime_sieve(n):
     if n is 0:
