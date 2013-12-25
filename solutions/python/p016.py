@@ -4,6 +4,9 @@
 What is the sum of the digits of the number 2^1000?
 """
 
-# Yay for python no integer overflow issues
+
 def run():
-    return sum(map(int, str(2**1000)))
+    """
+    Yay for python having no integer overflow issues
+    """
+    return sum(map(int, str(2 ** 1000)))

@@ -21,12 +21,16 @@ The 12th term, F12, is the first term to contain three digits.
 What is the first term in the Fibonacci sequence to contain 1000 digits?
 """
 
-# Since Python has more or less arbitrary length integers, we can just do
-# this the brute force way and have no overflows and still pretty fast
+
 def run():
+    """
+    Since Python has more or less arbitrary length integers, we can just do
+    this the brute force way and have no overflows and still pretty fast
+    """
     for index, fib in enumerate(fibgen()):
         if len(str(fib)) >= 1000:
             return index + 1
+
 
 # A fibonacci sequence generator
 def fibgen():

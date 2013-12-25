@@ -5,13 +5,18 @@ The sum of the squares of the first ten natural numbers is,
 The square of the sum of the first ten natural numbers is,
 
 (1 + 2 + ... + 10)^2 = 552 = 3025
-Hence the difference between the sum of the squares of the first ten natural numbers and the square of the sum is 3025  385 = 2640.
+Hence the difference between the sum of the squares of the first ten natural
+numbers and the square of the sum is 3025  385 = 2640.
 
-Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
+Find the difference between the sum of the squares of the first one hundred
+natural numbers and the square of the sum.
 """
 
-#Solution: Pretty straightforward.  If the input size gets into the big numbers
-#though, this might not work.  But since only ~100, it's okay.
+
 def run():
+    """
+    Solution: Pretty straightforward.  Yay for no overflows in Python.
+    """
     MAX = 100
-    return sum(range(1,MAX+1))**2 - sum([i**2 for i in xrange(1,MAX+1)])
+    return sum(range(1, MAX + 1)) ** 2 - \
+        sum([i ** 2 for i in xrange(1, MAX + 1)])

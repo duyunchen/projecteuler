@@ -1,5 +1,6 @@
 """
-Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.
+Work out the first ten digits of the sum of the following one-hundred 50-digit
+numbers.
 
 37107287533902102798797998220837590246510135740250
 46376937677490009712648124896970078050417018260538
@@ -103,18 +104,24 @@ Work out the first ten digits of the sum of the following one-hundred 50-digit n
 53503534226472524250874054075591789781264330331690
 """
 
-# Since python plays nice with big integers not overflowing,
-# we can just naively add all the numbers and extract the 
-# first 10 digits of the result.
+
 def run():
+    """
+    Since python plays nice with big integers not overflowing,
+    we can just naively add all the numbers and extract the
+    first 10 digits of the result.
+    """
     total = 0
     number_strings = get_number_strings()
     for number_string in number_strings:
         total += int(number_string)
     return str(total)[0:10]
 
-#parse the raw input into a list of strings
+
 def get_number_strings():
+    """
+    parse the raw input into a list of strings
+    """
     raw = """37107287533902102798797998220837590246510135740250
 46376937677490009712648124896970078050417018260538
 74324986199524741059474233309513058123726617309629

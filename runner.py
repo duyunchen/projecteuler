@@ -35,7 +35,6 @@ def run_python(number):
     endTime = int(round(time.time() * 1000))
     runtime = str(endTime - startTime)
     print 'Runtime: ' + runtime + ' ms'
-
     return result == key[number], runtime
 
 
@@ -89,4 +88,4 @@ def run_command(command):
     return p.communicate()
 
 if __name__ == "__main__":
-    print run_python(2)
+    print run_python(8)

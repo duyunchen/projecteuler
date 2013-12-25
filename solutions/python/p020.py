@@ -9,8 +9,9 @@ Find the sum of the digits in the number 100!
 
 from utils import factorial
 
-# Pretty straight forward
-def run():
-    return sum(map(int, str(factorial(100))))
-   
 
+def run():
+    """
+    Pretty straight forward. Python saves the day again.
+    """
+    return sum(map(int, str(factorial(100))))

@@ -1,5 +1,6 @@
 """
-In the 2020 grid below, four numbers along a diagonal line have been marked in red.
+In the 2020 grid below, four numbers along a diagonal line have been marked in
+red.
 
 08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
 49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00
@@ -24,31 +25,40 @@ In the 2020 grid below, four numbers along a diagonal line have been marked in r
 
 The product of these numbers is 26  63  78  14 = 1788696.
 
-What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 2020 grid?
+What is the greatest product of four adjacent numbers in the same direction
+(up, down, left, right, or diagonally) in the 2020 grid?
 """
-
 from utils import product as p
 
-# Solution: Basically just walk through the grid and check every possibility.
-# It doesn't really take that long given the input size.
+
 def run():
+    """
+    Solution: Basically just walk through the grid and check every possibility.
+    It doesn't really take that long given the input size.
+    """
     grid = get_grid()
-    
+
     height = len(grid)
     width = len(grid[0])
-    
+
     largest = 0
     for row in xrange(height):
         for col in xrange(width):
-            horizontal = grid[row][col:col+4] if col < width - 3 else []
-            vertical = [grid[row][col], grid[row+1][col], grid[row+2][col], grid[row+3][col]] if row < height - 3 else []
-            diagonal1 = [grid[row][col], grid[row+1][col+1], grid[row+2][col+2], grid[row+3][col+3]] if row < height - 3 and col < width - 3 else []
-            diagonal2 = [grid[row][col+3], grid[row+1][col+2], grid[row+2][col+1], grid[row+3][col]] if row < height - 3 and col < width - 3 else []
+            horizontal = grid[row][col:col + 4] if col < width - 3 else []
+            vertical = [grid[row][col], grid[row + 1][col], grid[row + 2][col],
+                        grid[row + 3][col]] if row < height - 3 else []
+            diagonal1 = [grid[row][col], grid[row + 1][col + 1],
+                         grid[row + 2][col + 2], grid[row + 3][col + 3]] \
+                         if row < height - 3 and col < width - 3 else []
+            diagonal2 = [grid[row][col + 3], grid[row + 1][col + 2],
+                         grid[row + 2][col + 1], grid[row + 3][col]] \
+                         if row < height - 3 and col < width - 3 else []
             m = max([p(horizontal), p(vertical), p(diagonal1), p(diagonal2)])
             if m > largest:
                 largest = m
-    
+
     return largest
+
 
 # Parse the input into a data structure (2-D list)
 def get_grid():
@@ -73,10 +83,9 @@ def get_grid():
 20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
 01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48"""
     rows = raw.split("\n")
-    
-    grid= []
+
+    grid = []
     for row in rows:
         grid.append(map(lambda x: int(x), row.split(" ")))
-        
+
     return grid
-        

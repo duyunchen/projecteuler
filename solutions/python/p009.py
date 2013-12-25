@@ -8,13 +8,15 @@ There exists exactly one Pythagorean triplet for which a + b + c = 1000.
 Find the product abc.
 """
 
-# Solution: I'm going with a brute force-ish solution which still runs
-# decently fast given the nature of the input.
+
 def run():
+    """
+    Solution: I'm going with a brute force-ish solution which still runs
+    decently fast given the nature of the input.
+    """
     SUM = 1000
-    for a in xrange(1,500):
-        for b in xrange(a,SUM):
+    for a in xrange(1, 500):
+        for b in xrange(a, SUM):
             c = SUM - a - b
-            if a*a + b*b == c*c:
-                return a*b*c
-        
+            if a * a + b * b == c * c:
+                return a * b * c

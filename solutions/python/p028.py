@@ -1,5 +1,6 @@
 """
-Starting with the number 1 and moving to the right in a clockwise direction a 5 by 5 spiral is formed as follows:
+Starting with the number 1 and moving to the right in a clockwise direction a
+5 by 5 spiral is formed as follows:
 
 21 22 23 24 25
 20  7  8  9 10
@@ -9,24 +10,26 @@ Starting with the number 1 and moving to the right in a clockwise direction a 5 
 
 It can be verified that the sum of the numbers on the diagonals is 101.
 
-What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral formed in the same way?
+What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral formed
+in the same way?
 """
 
-"""
-Solution: We notice a pattern 1 + 3 + 5 + 7 + 9 + 13 + 17 + 21 + 25
-the gaps between the numbers are 2, 2, 2, 2, 4, 4, 4, 4, 6, 6, 6, 6... etc
-"""
+
 def run():
+    """
+    Solution: We notice a pattern 1 + 3 + 5 + 7 + 9 + 13 + 17 + 21 + 25
+    the gaps between the numbers are 2, 2, 2, 2, 4, 4, 4, 4, 6, 6, 6, 6... etc
+    """
     N = 1001
-    
-    total, counter, current, increment = 0,0,1,2
-    
-    while current <= N*N:
+
+    total, counter, current, increment = 0, 01, 2
+
+    while current <= N * N:
         total += current
         current += increment
         counter += 1
         if counter == 4:
             counter = 0
-            increment += 2 
-    
+            increment += 2
+
     return total
