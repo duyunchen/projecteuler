@@ -3,6 +3,8 @@ import time
 from os import listdir
 import subprocess as sub
 
+NUM = 52
+
 
 # Reads in the answer key
 def read_key():
@@ -88,4 +90,4 @@ def run_command(command):
     return p.communicate()
 
 if __name__ == "__main__":
-    print run_python(51)
+    print run_python(NUM)
