@@ -32,10 +32,6 @@ def run():
 
         s = str(p)
 
-        # lol
-        if '0' not in s and '1' not in s:
-            continue
-
         for digit in '0123456789':
             # No need to replace the last digit due to parity
             num_appear = s[:-1].count(digit)
