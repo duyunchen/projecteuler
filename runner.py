@@ -3,7 +3,7 @@ import time
 from os import listdir
 import subprocess as sub
 
-NUM = 52
+NUM = 54
 
 
 # Reads in the answer key

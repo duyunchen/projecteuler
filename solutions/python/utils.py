@@ -4,10 +4,11 @@ alphabet = {char: index + 1 for index, char in \
             enumerate("abcdefghijklmnopqrstuvwxyz")}
 
 
-# Reads a text file in the standard EP format
-def read_file(filename):
+# Reads a text file in the standard Project Euler format
+def read_file(filename, line_delim=','):
     with open(filename) as f:
-        return map(lambda x: x.replace('"', '').strip(), f.read().split(","))
+        return map(lambda x: x.replace('"', '').strip(),
+                   f.read().split(line_delim))
 
 
 # Determines if a number is a perfect square
