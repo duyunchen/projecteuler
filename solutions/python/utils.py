@@ -211,22 +211,41 @@ def replacenth(string, pattern, new, n):
     """
     Replaces the nth occurrence of pattern with new
     """
-    p = findnth(source, pattern, n)
-    if n == -1:
+    p = findnth(string, pattern, n)
+    if p == -1:
         return string
     return string[:p] + new + string[p + len(pattern):]
+
+from itertools import combinations, chain
+
+
+def powerset(iterable):
+    xs = list(iterable)
+    return chain.from_iterable(combinations(xs, n) for n in range(len(xs) + 1))
 
 
 # A counter class that holds key -> count pairs
 class Counter():
-    def __init__(self):
+    largest = -1
+    best = None
+
+    def __init__(self, track_max=False):
+        """
+        track_max greatly improves get_most lookup speed at the cost of slight
+        slower add
+        """
         self.counter = {}
+        self.track_max = track_max
 
     def add(self, obj):
         if not self.counter.get(obj):
             self.counter[obj] = 1
         else:
             self.counter[obj] += 1
+
+        if self.track_max and self.counter[obj] > self.largest:
+            self.largest = self.counter[obj]
+            self.best = obj
 
     def get(self, obj):
         if not self.counter.get(obj):
@@ -236,6 +255,9 @@ class Counter():
 
     # returns item with the highest count along with the count
     def get_most(self):
+        if self.track_max:
+            return self.best, self.largest
+
         largest = -1
         best = None
         for key, value in self.counter.items():
