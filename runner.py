@@ -3,7 +3,7 @@ import time
 from os import listdir
 import subprocess as sub
 
-NUM = 54
+NUM = 65
 
 
 # Reads in the answer key
@@ -28,9 +28,8 @@ def convert(number):
 # Run a python solution given number
 def run_python(number):
     module_name = "p" + convert(number)
+    print 'Running ' + module_name + '.py'
     solution = __import__(module_name)
-
-    print 'Running ' + solution.__name__ + '.py'
     startTime = int(round(time.time() * 1000))
     result = str(solution.run())
     print 'Result: ' + result

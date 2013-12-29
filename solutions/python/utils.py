@@ -28,9 +28,9 @@ def lcm(a, b):
     return a * b / gcd(a, b)
 
 
-# Finds the LCM between two numbers
+# Finds the gcd between two numbers
 def gcd(a, b):
-    if b is 0:
+    if b == 0:
         return a
     else:
         return gcd(b, a % b)
@@ -39,6 +39,15 @@ def gcd(a, b):
 # Returns whether x is a palindrome
 def is_palindrome(x):
     return str(x) == str(x)[::-1]
+
+
+# Returns the sum of digits in a number
+def digit_sum(x):
+    s = str(x)
+    total = 0
+    for c in s:
+        total += int(c)
+    return total
 
 
 # Converts a number to string binary
@@ -62,14 +71,14 @@ def product(numbers):
 def is_prime(num):
     if num == 2:
         return True
-    if num == 1 or num % 2 == 0:
+    elif num == 1 or num % 2 == 0:
         return False
-
-    n_sqrt = int(math.ceil(math.sqrt(num)))
-    for x in xrange(3, n_sqrt + 1, 2):
-        if num % x == 0:
-            return False
-    return True
+    else:
+        n_sqrt = int(math.sqrt(num))
+        for i in xrange(3, n_sqrt + 1, 2):
+            if num % i == 0:
+                return False
+        return True
 
 
 # Generator for permutations of a string
