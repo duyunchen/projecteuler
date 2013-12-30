@@ -112,16 +112,22 @@ def get_sum_of_first_n(n):
 
 
 # Returns unique primes factors of a number
-def get_prime_factors(n):
-    factors = set()
+def get_prime_factors(n, as_list=False):
+    factors = [] if as_list else set()
     d = 2
     while d * d <= n:
         while n % d == 0:
-            factors.add(d)  # supposing you want multiple factors repeated
+            if as_list:
+                factors.append(d)
+            else:
+                factors.add(d)  # supposing you want multiple factors repeated
             n /= d
         d += 1 if d == 2 else 2
     if n > 1:
-        factors.add(n)
+        if as_list:
+            factors.append(n)
+        else:
+            factors.add(n)
     return factors
 
 
@@ -148,7 +154,10 @@ def generate_rotation(s):
         yield s[0]
     else:
         for _ in xrange(len(s)):
-            s = s[1:] + s[0]
+            if type(s) == list:
+                s = s[1:] + [s[0]]
+            else:
+                s = s[1:] + s[0]
             yield s
 
 

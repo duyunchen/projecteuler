@@ -3,7 +3,7 @@ import time
 from os import listdir
 import subprocess as sub
 
-NUM = 65
+NUM = 74
 
 
 # Reads in the answer key
@@ -36,6 +36,7 @@ def run_python(number):
     endTime = int(round(time.time() * 1000))
     runtime = str(endTime - startTime)
     print 'Runtime: ' + runtime + ' ms'
+    print key[number]
     return result == key[number], runtime
 
 
