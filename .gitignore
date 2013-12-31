@@ -1,6 +1,7 @@
 .project
 .classpath
 .pydevproject
+.settings
 *.pyc
 *.o
 *.class
